@@ -9,6 +9,7 @@
 
 ## General Info
 - This was a group project that was made for the class COMP 3020 Human Computer Interaction 1. It was a semester long group project.
+- The main goal was for us to learn HTML and CSS, but also to get a sense of working together as a team to simulate real life jobs, this meant we also used tools such as GitHub and Jira.
 - We create a Pomodoro wbesite, which if you don't know what it is. It is basically a type/style of studying, where you focus for x amount of minutes, and then rest for x another minutes.
   Usually its 50 minutes of pure focus and 10 minutes of break. Then the cyle repeats for how many ever sessions you plan to.
   <br>What we created as a group is a way of stylizing Pomodoro, where we kept the clock as our main focus, but we added themes of a coffee shop, hence the cafe in the name. 
