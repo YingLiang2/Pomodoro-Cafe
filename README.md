@@ -28,4 +28,5 @@
 Then open the file useing the method of your choosing (drag and drop, right click - open with, etc)
 with the most recent version of google chrome.
 
+![Pomodoro Cafe example](https://user-images.githubusercontent.com/93963545/175721213-4fb74d6e-a15e-4680-80b2-214d54e62edc.png)
 
