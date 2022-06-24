@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+
+		<!-- Icon -->
+		<link rel="shortcut icon" href="assets/favicon2.ico"/>
+
+		<!-- stylesheets -->
+		<link rel="stylesheet" href="css/generalStyles.css">
+		<link rel="stylesheet" href="css/breakStyles.css">
+		<link rel="stylesheet" href="css/buttonBlockStyles.css">
+		<link rel="stylesheet" href="css/dropdownStyles.css">
+		<link rel="stylesheet" href="css/flexStyles.css">
+		<link rel="stylesheet" href="css/popupStyles.css">
+		<link rel="stylesheet" href="css/timerStyles.css">
+		<link rel="stylesheet" href="css/topBarStyles.css">
+		<link rel="stylesheet" href="css/youtubePlayerStyle.css">
+		<link rel="stylesheet" href="css/coffeeAnimationStyle.css">
+		<link rel="stylesheet" href="css/statsButton.css">
+		<link rel="stylesheet" href="css/coffeeCupStyle.css">
+		<link rel="stylesheet" href="css/fadeOutStyle.css">
+
+		<!-- scripts -->
+		<script src="js/achievements.js"></script>
+		<script src="js/popups.js"></script>
+		<script src="js/goals.js"></script>
+		<script src ="js/coffeeAnimation.js"></script>
+		
+		<!-- graph script -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
+    
+
+		<script src="js/timer.js"></script> 
+		<script src="js/goals.js"></script>
+    
+		<script src="js/changeMusic.js"></script>
+		<script src="js/graph.js" ></script>
+		<script src="js/graphPer.js" ></script>
+		<script src="js/statsNavigation.js" ></script>
+		<script src="js/statsButtonCalls.js" ></script>
+		<script src="js/editGraphs.js" ></script>
+		
+		<script src="js/startupCalls.js" ></script>
+		
+		<title>Pomodoro Cafe</title>
+	</head>
+		<!-- auto generate the 3 goals on opening the page -->
+	<body onload="startupInit()">
+		<!-- The top bar. -->
+		<div class="topbar">
+			<div onclick="openLoginForm()">Login</div>
+			<div id="welcome">Welcome, Guest</div>
+		</div>
+		
+		<!-- Container for main page elements. This allows elements to exist side by side. -->
+		<div class="flex-container">
+			<div class="flex-child">
+				<!-- The side bar. -->
+				<div class="buttonBlock">
+					<div onclick="openGoalsPopup()">Tasks</div>
+					<div onclick="openStatsPopup()">Stats</div>
+					<div onclick="openAchievementsPopup()">
+						<span>Points Store</span>
+						<span id="pointsIndicator" class="fadeOutText">+15</span>						
+					</div>
+				</div>
+			</div>
+
+			<div class="flex-child"> 
+				<!-- This is the timer block. It is centered. Pressing the text labeled Start or Stop will affect the timer. -->
+				<div class="timer">
+					<span id="time">00:00</span>
+
+					<div class="startButton" id="timerButton" onclick="currTimer.setTime(); startAnimation()">Start</div>
+					<p class="taskDisplay" id = "taskName" >Current Task (Not Set)</p>
+
+				</div>
+			</div>
+
+			<div class="flex-child">
+				<!-- The break time area-->
+				<div class="break">
+					<div onclick="takeBreak()">Take a Break</div>
+					<!--<img src="mug.png" alt="Mug"> -->
+				</div>
+			</div>
+		</div>
+		
+		<!-- Login form. This is a faked form. If we want to implement a real one we'd have to include something like a .php file and a form element. -->
+		<div class="popup form-container loginPopup" id="login">
+			<!-- X Button -->
+			<button class="closeButton" onclick="closeLoginForm()">X</button>
+		
+			<h1>Login</h1>
+
+			<label for="username"><b>Username</b></label>
+			<span id="usernameError" class="error"></span>
+			<input id="username" type="text" placeholder="Enter Username">
+
+			<label for="password"><b>Password</b></label>
+			<span id="passwordError" class="error"></span>
+			<input id="password" type="password" placeholder="Enter Password">
+
+			<button onclick="submitLoginForm()">Login</button>
+		</div>
+		
+		<!-- Goals popup. -->
+		<div class="popup goalsPopup" id="goals">
+			<!-- X Button -->
+			<button class="closeButton" onclick="closeGoalsPopup()">X</button>
+		
+			<h1>Tasks</h1>
+			
+			<select id="goalSelector">
+				<option value="-1">Choose Task</option>
+			</select>
+			<button onclick="setGoal()">Set Task</button>
+			
+			<div class="form-container">
+				<!-- New Goal Form -->
+				<h2>New Task</h2>
+			
+				<!-- Divide form inputs into categories. Gestalt principle of proximity. -->
+				<div class="form-block" id="goalNameBlock">
+					<h3>Task Name</h3>
+				
+					<!-- Error section -->
+					<span id="goalNameError" class="error"> </span>
+					<br>
+					<input id="goalName" type="text" placeholder="Task Name">					
+				</div>
+				
+				<!-- Hour goals -->
+				<div class="form-block numberInput" id="hourGoals">
+				<h3>Hourly Goals</h3>
+				
+				<!-- Error section -->
+					<span id="dailyGoalError" class="error"> </span>
+					<br>
+					<input id="dailyGoal" type="number" min="0" max="99" placeholder="Daily Goal (Hours)"> <br>
+										
+					<!-- Error section -->
+					<span id="weeklyGoalError" class="error"> </span>
+					<br>
+					<input id="weeklyGoal" type="number" min="0" max="99" placeholder="Weekly Goal (Hours)">					
+				</div>
+				
+				<!-- Work period length -->				
+				<div class="form-block numberInput" id="workPeriodInput">
+					<h3>Work Period Length</h3>
+					
+					<!-- Error section -->
+					<span id="workPeriodError" class="error"> </span>
+					<br>
+					<!-- Timer input -->
+					<input id="workMinutes" type="number" min="0" max="99" placeholder="Minutes"> <span><b>: </b></span> <input id="workSeconds" type="number" min="0" placeholder="Seconds">										
+				</div>
+				
+				<!-- Breaks -->
+				<div class="form-block numberInput" id="breakPeriodInput">
+					<h3>Breaks</h3>
+				
+					<!-- Breaks per day input.. -->
+					<!-- Error section -->
+					<span id="breakNumberError" class="error"> </span>
+					<br>
+					<input id="breaks" type="number" min="1" max="99" placeholder="# of Breaks Per Day"> <br>
+					
+					<!-- Error section -->
+					<span id="breakPeriodError" class="error"> </span>
+					<br>
+					<!-- Break time input. -->
+					<input id="breakMinutes" type="number" min="0" max="99" placeholder="Minutes"> <span><b>: </b></span> <input id="breakSeconds" type="number" min="0" max="99" placeholder="Seconds">										
+				</div>
+				
+				<button onclick="createGoal()">Create Task</button>
+			</div>
+		</div>
+		
+		<!-- Stats popup. -->
+		<div class="popup statsPopup" id="stats">
+			<!-- X Button -->
+			<button class="closeButton" onclick="closeStatsPopup()">X</button>
+		
+			<div class="form-container">
+			<h1>Statistics</h1>
+				<div border: 3px solid #73AD21;>
+					<button id = "nb1" class = "buttonBlock statNavButton" onclick = "backTime()" > < Previous Day</button>
+					<button id = "nb2" class = "buttonBlock statNavButton" onclick = "forwardTime()" >Next Day > </button>
+					<button id = "nb3" class = "buttonBlock statNavButton" onclick = "currentTime()">Current Day</button> 
+				</div>
+				
+				<div class = "stats-form-container">	
+					<button class = "buttonBlock buttonRow" onclick = "dayButton()" >Day</button>
+					<button class = "buttonBlock buttonRow" onclick = "weekButton()" >Week</button>
+					<button class = "buttonBlock buttonRow" onclick = "yearButton()">Year</button> 
+
+				</div>	
+				<canvas id="myChart"style = "width:100%;max-width:630px; height: 80%;max-height: 400px; min-height: 300px" ></canvas>
+				<p>Selecting a graph lable removes the lable and it's values from the graph. </p>
+				<p>Re-Selecting the graph lable reverses the change.</p>
+			</div>			
+		</div>
+	
+		<!-- Achievements popup. -->
+		<div class="popup achievementPopup" id="achievements">
+			<!-- X Button -->
+			<button class="closeButton" onclick="closeAchievementsPopup()">X</button>
+
+		
+			<div class="achievement-header"> 
+				<div class= "achievement-title">				
+					<h1>Points Store</h1>
+				</div>
+				<div class="currency-background">
+					<h3 id="currency_display">Points: 0</h3>		
+				</div>
+			</div>
+			
+			<div>
+				Select or purchase your desired breaktime mugs below!
+			</div>
+			Earn Points by completing study periods.
+
+			<div class="form-mug-selection-container">
+				<div class="form-mug-selection">
+					<div class="form-picture">
+						<div class="mug-selection-text">
+							<h2 id="Menu_item_0">Buy</h2>
+						</div>
+						<img src="assets/whiteMug.png" alt="Mug1" class="list-item">
+					</div>
+					<div class="form-picture-buttons" >
+						<button onclick="buyMug(0, 15)"> Buy</button>
+						<button onclick="selectMug(0)"> Select</button>
+					</div>
+				</div>
+	
+				<div class="form-mug-selection">
+					<div class="form-picture">
+						<div class="mug-selection-text">
+							<h2 id="Menu_item_1">Buy</h2>
+						</div>
+						<img src="assets/pinkMug.png" alt="Mug2" class="list-item">
+					</div>
+					<div class="form-picture-buttons" >
+						<button onclick="buyMug(1, 15)"> Buy</button>
+						<button onclick="selectMug(1)"> Select</button>
+					</div>
+				</div>
+				<div class="form-mug-selection">
+					<div class="form-picture">
+						<div class="mug-selection-text">
+							<h2 id="Menu_item_2">Buy</h2>
+						</div>
+						<img src="assets/mug3.png" alt="Mug3" class="list-item">
+					</div>
+					<div class="form-picture-buttons" >
+						<button onclick="buyMug(2, 15)"> Buy</button>
+						<button onclick="selectMug(2)"> Select</button>
+					</div>
+				</div>
+				<div class="form-mug-selection">
+					<div class="form-picture">
+						<div class="mug-selection-text">
+							<h2 id="Menu_item_3">Buy</h2>
+						</div>
+						<img src="assets/mug4.png" alt="Mug4" class="list-item">
+					</div>
+					<div class="form-picture-buttons" >
+						<button onclick="buyMug(3, 15)"> Buy</button>
+						<button onclick="selectMug(3)"> Select</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Youtube Player -->
+		<div class="youtubePlayer"> 
+
+			<iframe id="Player" src="https://www.youtube.com/embed/5qap5aO4i9A"> </iframe>
+
+		</div>
+		
+	
+
+		<!-- These are buttons to switch the music in the bottom the left.-->
+		<input type="button" class="lofiButton" value="Lofi Music" onclick ="setURL('https://www.youtube.com/embed/5qap5aO4i9A')" >
+		
+		<input type="button" class="coffeeButton" value="Coffee Shop Music" onclick ="setURL('https://www.youtube.com/embed/BywDOO99Ia0')" >
+
+		<input type="button" class="cofeeShopAmbience" value="Coffee Shop Ambience" onclick ="setURL('https://www.youtube.com/embed/gaGrHUekGrc')" >
+
+
+
+		<!-- Coffee Animation stuff-->
+		
+		<div class="drop"></div>
+		
+		<div class="container">
+
+			</div>
+			<div class="row grinder">
+			</div>
+			<div id="rowGrinderBottom" class="row grinder_bottom">
+
+				
+
+			</div>
+			<div class="grinder_handle"></div>
+			<div class ="grinder_top"></div>
+
+			
+			<div class="cup">
+
+				<div class="topOfCup">
+
+					<div class="smoke">
+
+						<span style="--i:1"></span>
+						<span style="--i:3"></span>
+						<span style="--i:16"></span>
+						<span style="--i:5"></span>
+						<span style="--i:13"></span>
+						<span style="--i:20"></span>
+						<span style="--i:6"></span>
+						<span style="--i:7"></span>
+						<span style="--i:10"></span>
+						<span style="--i:8"></span>
+					
+
+					</div>
+
+					<div class="coffee">
+
+					</div>
+
+
+				</div>
+
+				<div class="cupHandle">
+
+
+				</div>
+
+
+			</div>
+
+			<!-- A vshaped coffee cup
+			<div class="VcoffeeCup">
+			</div> -->
+
+		  </div>
+
+		 
+
+	</body>
+</html>

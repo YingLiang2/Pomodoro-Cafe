@@ -1,0 +1,12 @@
+.fadeOutText {
+  animation: fadeOut linear 4s;
+  animation-iteration-count: 1;
+  animation-play-state: paused;
+  opacity: 0;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 0; }
+  1% { opacity: 1; }
+  100% { opacity: 0;}
+}

@@ -1,0 +1,24 @@
+.topbar {
+	overflow: hidden;
+	background-color: #A47551;
+	border-bottom:4px solid #523A28;
+}
+
+.topbar div {
+	float: left;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topbar div:hover {
+	background-color: ivory;
+	color: black;
+}
+
+.topbar div.active {
+	background-color: #000000;
+	color: ivory;
+}

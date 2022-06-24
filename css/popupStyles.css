@@ -1,0 +1,182 @@
+.popup {
+	display: none; /* Don't display popups at first. */
+	position: absolute; /* Don't let'em get away! */
+	border: 5px solid #523A28; /* Differentiate popups from background elements. */
+	z-index: 9; /* Keep popups on top. */
+  
+	width: 50%; /* Arbitrary. */
+	padding: 10px;
+	background-color: #E4D4C8;	
+		
+	/* Center popups. */
+	left: 50%;
+	-ms-transform: translate(-50%, 0%);
+	transform: translate(-50%, 0%);	
+}
+
+.loginPopup {
+	position: absolute; /* Don't let'em get away! */
+	top: 25%;
+	
+	overflow:auto;
+	height: auto;	
+}
+
+.goalsPopup {
+	position: absolute; /* Don't let'em get away! */
+	top: 5%;
+	
+	overflow:auto;
+	height: 95%;	
+}
+
+.statsPopup{
+	width: 50%;
+	height: auto;
+	
+	top: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.achievementPopup{
+	position: absolute; /* Don't let'em get away! */
+	width: 50%;
+	top: 20%;
+}
+
+/* Javascript changes placeholder text color to red on error. */
+input.placeholderred::placeholder {
+   color: red;
+
+}
+
+.form-container { /* Styles for the form container */
+	width: auto;	
+}
+
+.stats-form-container { /* Styles for the form container */
+	width: auto;	
+	margin: 5px 1px 15px 1px;
+}
+
+.form-container input[type=text], .form-container input[type=password] { /* Style for username, password and various other fields. */
+	width: 100%;
+	padding: 15px;
+	margin: 5px 1px 5px 1px;
+	border: none;
+	background-color: #D0B49F;
+}
+
+.form-container input[type=text]:focus, .form-container input[type=password]:focus { /* Change input fields when selected. */
+	/*background-color: #A47551;*/
+	outline: none;
+}
+
+.form-block {
+	border: 1px solid #A47551;
+	
+	/* The end of a form block needs a bit of space before the next one to differentiate between them. */
+	margin-bottom: 5px;
+	background-color: #A47551;
+	padding: 10px;
+}
+
+
+/*
+	Styles for making the mug selection work for the achievements tab
+*/
+.achievement-header{
+	overflow: auto;
+	background-color: #E4D4C8;
+	white-space: nowrap;
+	height: 5%;
+	max-height: 100%;
+}
+
+.achievement-title{
+	white-space: nowrap;
+	display: inline-block;  /*Dislay this item next to the header*/
+}
+
+.currency-background{
+	position: absolute;
+	right: 1%;
+	top: 10%;
+	padding-left: 1%;
+	padding-right: 1%;
+	height: min-content;
+}
+
+
+.form-mug-selection-container {
+	height: 25%;
+	width: 100%;
+	white-space: nowrap;
+	overflow: auto;
+	background-color: #D0B49F;
+}
+
+.form-mug-selection {
+	width: 30%;
+	height: 100%;
+	text-align: center;
+	padding: 20px;
+	display: inline-block;		/*Makes the item part of a scrollable list*/
+
+}
+
+.mug-selection-text{
+	position: left;
+}
+
+.form-picture {
+	width: 100%;
+	height: 70%;
+	
+}
+
+.form-picture-buttons{
+	width: 100%;
+	height: 30%;
+	padding: 2px;
+	white-space: nowrap;
+	overflow: auto;
+}
+
+img.list-item {
+	max-height: 70%;
+	max-width: 100%;
+	height: 200px;
+}
+
+.numberInput input[type=number] {
+	width: 20%;
+	padding: 15px;
+	margin: 5px 1px 5px 1px;
+	border: none;
+	background: #E4D4C8;
+}
+
+.error {
+	color: pink;
+}
+
+.closeButton {
+	background-color: #523A28;
+	color: #E4D4C8;
+	width: 5%;
+	height: 5%;
+	position: sticky;
+	
+	left: 100%;
+	top: 0%;
+	
+	-ms-transform: translate(-50%, 0%);
+	transform: translate(-50%, 0%);
+}
+
+.closeButton:hover {
+	background-color: #A47551;
+	color: #E4D4C8;
+}

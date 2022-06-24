@@ -1,0 +1,24 @@
+.break {
+	float: right;
+	top: 10px;
+	width: 60%; /*Jank. This is 60% of one third.*/
+	position: relative;	
+}
+
+.break > div {
+	padding: 20px;
+	font-size: 30px;
+	text-align:center;
+	color: #D0B49F;
+	background-color: #523A28;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	display: block; /* Forces each element to be on top of one another. */
+	text-decoration: none; /* Removes the hyperlink underline. */
+	border: 2px solid #A47551;
+}
+
+.break > div:hover {
+	color: #000000; /* Darken the color to indicate the user is hovering over this element. */
+	background-color: ivory; /* Grey/white background makes it super obvious. */
+}

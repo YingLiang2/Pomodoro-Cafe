@@ -1,0 +1,307 @@
+/*Sources that helped animation code
+https://codepen.io/kendallbrookbank/pen/abdXvvj
+https://codepen.io/rosie_/pen/PowKYoo
+
+*/
+
+/*
+.beans {
+  margin: 20px auto;
+  width: 35px;
+  height: 50px;
+  background: #8B4C39;
+  border-radius: 50%;
+  animation: drop2 1s ease-in infinite;
+}
+
+.beans:before {
+  left: 18px;
+  width: 3px;
+  border-radius: 50%;
+  height: 98%;
+  background: #5E2605;
+  transform: rotate(-5deg);
+}
+
+*/
+.grinder {
+  position: absolute;
+  right: 50px;
+  top: 200px;
+  height: 120px;
+  width: 200px;
+  border-radius: 5px 5px 80px 80px;
+  background: #1d1d1d;
+}
+
+.grinder:before {
+  right: 40px;
+  top: 110px;
+  width: 120px;
+  height: 15px;
+  border-radius: 30px;
+  background: #504f4f;
+}
+
+.grinder:after {
+  z-index: 99;
+  right: 40px;
+  top: 125px;
+  width: 120px;
+  height: 15px;
+  border-radius: 30px;
+  background: #504f4f;
+}
+
+.grinder_bottom {
+  z-index: -1;
+
+  position: absolute;
+  top:380px;
+  right: 75px;
+
+  height: 100px;
+  width: 150px;
+  border-top-left-radius: 40px;
+  border-top-right-radius:40px;
+  border-bottom-right-radius:20px ;
+  border-bottom-left-radius:20px ;
+  
+  background: rgba(255, 255, 255, 0.7);
+  
+  animation: fill ease-in-out ;
+  animation-duration: 60s;
+  animation-fill-mode: forwards;
+  animation-play-state: paused;
+  
+
+
+} 
+
+
+
+.grinder_handle {
+
+  position: absolute;
+  width:40px;
+  height:50px;
+  right: 40px;
+  top:410px;
+  border:black solid 8px;
+  border-bottom-right-radius: 70px;
+  border-top-right-radius: 60%;
+
+  z-index: 0;
+
+}
+
+.grinder_top {
+
+  position: absolute;
+  width:100px;
+  height:5px;
+  right:100px;
+  top:370px;
+  border:black solid 8px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+
+}
+
+
+/*filling animation that fills the coffee pot */
+/*Not implemented yet, leave for later if we have time 
+*/
+@keyframes fill {
+  0% {
+    border-bottom: 0px solid #8B4C39;
+  }
+  /* 20% {
+    border-bottom: 20px solid #8B4C39;
+  }
+  40% {
+    border-bottom: 40px solid #8B4C39;
+  }
+  60% {
+    border-bottom: 60px solid #8B4C39;
+  }
+  80% {
+    border-bottom: 80px solid #8B4C39;
+  } */
+  100% {
+    border-bottom: 90px solid #8B4C39;
+  }
+
+}
+
+
+/*
+.VcoffeeCup {
+  z-index: 99;
+  width: 250px;
+  height: 170px;
+  border-top: 140px solid white;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-radius: 5px;
+}
+
+.VcoffeeCup:before {
+  top: -135px;
+  right: -90px;
+  width: 80px;
+  height: 115px;
+  border: 15px solid white;
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.VcoffeeCup:after {
+  position: absolute;
+  z-index: 99;
+  content: '';
+  width: 220px;
+  height: 15px;
+  background: white;
+  left: -45px;
+  border-radius: 60px;
+}
+*/
+
+
+
+
+  
+  
+  
+  .drop {
+
+    display:none;
+    z-index: -1;
+    position: absolute;
+    right: 140px;
+      width: 20px;
+      height: 20px;
+    top: 340px;
+    margin: 0 auto;
+      background: #5a2d0c;
+      -moz-border-radius: 20px;
+      -webkit-border-radius: 20px;
+      border-radius: 20px;
+    -moz-animation-name: drip;
+    -webkit-animation-name: drip;
+    animation-name: drip;
+    -moz-animation-timing-function: cubic-bezier(1,0,.91,.19);
+    -webkit-animation-timing-function: cubic-bezier(1,0,.91,.19);
+    animation-timing-function: cubic-bezier(1,0,.91,0.19);
+    -moz-animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+   
+  }
+  
+  .drop:before {
+  
+    content: "";
+    position: absolute;
+    width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 30px solid SaddleBrown;
+    top: -22px;
+  }
+ 
+  /*
+    This is for the splash animation.
+
+  .drop:after {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 0px;
+    height: 0px;
+    border: solid 4px #5a2d0c;
+    border-radius: 50%;
+    opacity: 0;
+    animation: splash 4s ease infinite;
+  }
+
+  */
+
+  @keyframes drip {
+      to {
+        top: 460px;
+      }
+  }
+
+  /*
+  Another coffee cup, that probably won't be used.
+  .cup {
+    margin: 40px auto;
+    width: 190px;
+    height: 150px;
+    background: #B7C3D0;
+    border-radius: 5px 5px 80px 80px;
+  }
+  
+  .cup:after {
+    top: 10px;
+    right: -45px;
+    width: 60px;
+    height: 80px;
+    border: 15px solid #B7C3D0;
+    border-radius: 70px;
+  }
+
+  */
+ 
+/*
+  Cannot figure out how to get the splash working without changing the size of the screen. 
+  Will leave for later if we have time I guess
+
+  @keyframes splash {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      bottom: 50px;
+      left: 100px;
+      opacity: 0;
+      width: 0px;
+      height: 0px;
+    }
+    25.001% {
+      opacity: 1;
+    }
+    33% {
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      width: 200px;
+      height: 100px;
+    }
+    33.001% {
+      bottom: 50px;
+      left: 100px;
+      opacity: 1;
+      width: 0px;
+      height: 0px;
+    }
+    43% {
+      bottom: 0;
+      left: 0;
+      opacity: 0;
+      width: 200px;
+      height: 100px;
+    }
+    43.001% {
+      opacity: 0;
+    }
+}
+*/

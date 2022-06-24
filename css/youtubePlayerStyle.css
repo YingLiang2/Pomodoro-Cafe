@@ -1,0 +1,68 @@
+
+
+.youtubePlayer {
+    margin:0; /* You'll probably need to add a margin that lets the buttons sit underneath. */
+    position:fixed; /* Keeps the player in the same position regardless of scrolling. */
+    overflow:hidden;
+	
+	/* Move the player to the bottom left. */
+    top:100%;
+    left:0%;
+	transform: translate(0%, -100%);
+}
+
+#Player {
+    
+    height:200px;
+    width:370px;
+    border-top-right-radius: 10px; /*round the edge on player*/
+
+
+}
+
+input[type=button].lofiButton {
+
+    margin:0;
+    position:fixed;
+    overflow:hidden;
+
+    color:ivory;
+    background-color: #523A28;
+    border-radius: 5px;
+    border: 2px solid #A47551;
+
+    bottom:220px;
+
+}
+
+input[type=button].coffeeButton {
+
+    margin:0;
+    position:fixed;
+    overflow:hidden;
+
+    color: ivory;
+    background-color: #523A28;
+    border-radius: 5px;
+    border: 2px solid #A47551;
+
+    bottom:220px;
+    left:85px;
+
+}
+
+input[type=button].cofeeShopAmbience {
+
+    margin:0;
+    position:fixed;
+    overflow:hidden;
+
+    color:ivory;
+    background-color: #523A28;
+    border-radius: 5px;
+    border: 2px solid #A47551;
+
+    bottom:220px;
+    left:220px;
+
+}

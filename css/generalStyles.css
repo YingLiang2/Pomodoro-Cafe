@@ -1,0 +1,28 @@
+html {
+	/* Prevents elements with padding from overflowing the parent box. */
+	box-sizing: border-box;
+
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 
+ * This was reccommended in a tutorial. 
+ * I think it applies to elements before and after regardless of where the style code is.
+ */
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+body {
+	/* Makes sure our site touches the edges of the screen. */
+
+	background-color: #E4D4C8;
+	margin: 0;
+}
+
+/* This is probably used for the animation stuff, */
+:before,
+:after {
+  position: absolute;
+  content: '';
+}

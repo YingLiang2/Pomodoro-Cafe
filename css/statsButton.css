@@ -1,0 +1,36 @@
+/* button for stats, to be used with blockButton*/
+.buttonRow {
+	color: #E4D4C8;
+	display: inline;
+	max-width: 100px;/* ensures no button over 100 px wide*/
+	padding: 10px;
+	font-size: 20px;
+	width: 30%;
+    background-color: #523A28;
+	
+	border-top-right-radius: 0px;	
+	border-bottom-right-radius: 0px;
+}
+
+
+
+.statNavButton {
+	color: #E4D4C8;
+	display: inline;
+	max-width: 200px;/* ensures no button over 200 px wide*/
+	padding: 5px;
+	font-size: 16px;
+	width: 25%; 
+    background-color: #654321;
+	border-top-right-radius: 0px;	
+	border-bottom-right-radius: 0px;
+}
+
+.statNavButton:hover:enabled {
+	color: #000000; /* Darken the color to indicate the user is hovering over this element. */
+	background-color: #eeeeee; /* Grey/white background makes it super obvious. */
+}
+.buttonRow:hover:enabled {
+	color: #000000; /* Darken the color to indicate the user is hovering over this element. */
+	background-color: #eeeeee; /* Grey/white background makes it super obvious. */
+}
